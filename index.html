@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Test</title>
-
+<!-- this is where CSS is linked -->
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-
+<!-- displays countdown and highscore -->
   <div class="header">
         <span id="highscore">View Highscores</span>
         <span id="countdown">Time: 60 seconds</span>
   </div>
-
+<!-- quiz intro and start button -->
   <div class="javascript">
     <h1 class="javascript">How well do you know JavaScript?</h1>
         <p class="instructions">
@@ -27,16 +27,18 @@
       <button type="button" class="btn start-btn">Start Quiz</button>
   </div>
   </div>
-
+<!-- all questions are held here until called on -->
     <div class="the-test">
      <h3 class="question"></h3>
         <button type="button" class="btn trigger choice1"></button>
         <button type="button" class="btn trigger choice2"></button>
         <button type="button" class="btn trigger choice3"></button>
         <button type="button" class="btn trigger choice4"></button>
+        <!-- displays if correct or incorrect -->
         <span id="correct-incorrect"></span>
     </div>
 
+<!-- option to put in initials after quiz is complete -->
   <div class="initials-section">
     <div class="margin">
         <h3>Thank you for taking the JavaScript Test!</h3>
@@ -45,7 +47,7 @@
         <button type="submit" class="btn trigger submit-btn">Submit</button>
     </div>
   </div>
-
+<!-- View Highscore for both current and previous scores -->
   <div class="the-score">
     <div class="margin">
       <div class="highscores-div">
@@ -57,7 +59,7 @@
       </div>
     </div>
   </div>
-
+<!-- link to jscript file -->
   <script src="./assets/js/script.js"></script>
 </body>
 
