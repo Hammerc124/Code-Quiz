@@ -1,3 +1,4 @@
+/* reset */
 {
 	margin: 0;
 	padding: 0;
@@ -6,14 +7,14 @@
 	font: inherit;
 	vertical-align: baseline;
 }
-
+/* body style */
 body {
-    background-color: #081659;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #5a5e74;
+    font-family: Helvetica, Arial, sans-serif;
 }
-
+/* header styling */
 .header {
-    background-color:  #ffffff;
+    background-color:  #fff6a3;
     padding: 15px 50px;
     font-weight: 700;
 }
@@ -25,7 +26,7 @@ body {
 #highscore:hover {
     color: #4656a3;
 }
-
+/* quiz instructions */
 .javascript {
     margin-top: 50px;
     background-color: transparent;
@@ -45,7 +46,7 @@ body {
     font-size: 18pt;
     color: #ffffff;
 }
-
+/* button styling */
 .btn {
     margin: auto;
     text-align: center;
@@ -67,7 +68,7 @@ body {
 margin: auto;
 
 }
-
+/* test questions */
 .the-test {
     margin-top: 85px;
     display: none;
@@ -92,7 +93,7 @@ margin: auto;
     margin: 100px 30px;
 
 }
-
+/* highscore page */
 .the-score {
     display: none;
     text-align: center;
