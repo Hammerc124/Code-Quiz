@@ -1,3 +1,4 @@
+//Variables - these are the query selectors which references the HTML
 var startBtn = document.querySelector(".start-btn");
 var countdown = document.querySelector("#countdown");
 var question = document.querySelector(".question");
@@ -13,6 +14,7 @@ var theScore = document.querySelector(".the-score");
 var viewHighscores = document.querySelector("#highscore");
 var theHighscore = document.querySelector(".highscores-section");
 
+//Variaables - Set of questions 
 var q1 = "Which of the following keywords is used to define a variable in Javascript?"
 var q2 = "How to stop an interval timer in Javascript?"
 var q3 = "Which function is used to serialize an object into a JSON string in Javascript?"
@@ -20,6 +22,7 @@ var q4 = "What data type is 'bronco' in var cars = ['bronco', 'jeep', '4runner']
 var q5 = "Which of the following methods can be used to display data in some form using Javascript?"
 var theQuestions = [q1, q2, q3, q4, q5]
 
+//Variable Objects - Multiple choice answers 
 var testChoice1 = {
     optionA: "A--  Var",
     optionB: "B--  Let",
@@ -53,8 +56,10 @@ var testChoice5 = {
     optionC: "C--  window.alert()",
     optionD: "D--  All of the above"
 }
+//array that holds answers
 var theAnswers = [testChoice1, testChoice2, testChoice3, testChoice4, testChoice5]
 
+//correct answers
 var right1 = testChoice1.optionC;
 var right2 = testChoice2.optionB;
 var right3 = testChoice3.optionA;
@@ -62,26 +67,33 @@ var right4 = testChoice4.optionB;
 var right5 = testChoice5.optionD;
 var rightAnswers = [right1, right2, right3, right4, right5]
 
+//When start button is clicked the countdown begins 
     startBtn.addEventListener("click", startTimer)
 
+//start questions
     startBtn.addEventListener("click", function(){
         document.querySelector(".javascript").style.display = "none";
         theTest.style.display = "block";
         })
 
+//When selected answer button is clicked it will trigger the next question
     startBtn.addEventListener("click", nextQuestion)
 
     var correctIndex = 0;  
 
+//function for the next question 
     function nextQuestion(){
 
+ //Once they complete the test, user is now taken to the page to enter their initials
     if (correctIndex === theQuestions.length - 1) {
         setTimeout(function(){theTest.style.display = "none";
         initialsSection.style.display = "inline";
     }, 500);
 
+//Stop the timer 
         setTimeout(function(){clearInterval(timerInterval)}, 500);
 
+//go to the next question if not all have been answered
     } else {
         question.textContent = theQuestions[correctIndex];
         choice1.textContent = theAnswers[correctIndex].optionA;
@@ -91,6 +103,7 @@ var rightAnswers = [right1, right2, right3, right4, right5]
     }
     }
     
+//timer countdown function from 60 seconds
     var timeLeft = 60;
     var timerInterval;
     function startTimer(){
@@ -98,6 +111,7 @@ var rightAnswers = [right1, right2, right3, right4, right5]
             timeLeft --;
             countdown.textContent =  "Time: " + timeLeft + " seconds";
         
+//if time runs out, go to the initials page for user to enter their initials
             if (timeLeft === 0) {
               clearInterval(timerInterval);
               theTest.style.display = "none";
@@ -107,12 +121,15 @@ var rightAnswers = [right1, right2, right3, right4, right5]
         return timerInterval;
     }   
 
+//verify when an answer button is clicked and answer was correct
 theTest.addEventListener("click", verifyAnswer)
 
+//verify correct answer function
 function verifyAnswer(event){
     if(event.target.matches(".trigger")){
         var userChoice = event.target.textContent;
 
+//refreshes the page to start the test again if the start again button is clicked
         finalResult.textContent = " ";
         finalResult.style.display = "block";
             if (userChoice === rightAnswers[correctIndex]){
@@ -129,21 +146,26 @@ function verifyAnswer(event){
     return timeLeft;
 };
 
+//When user chooses their answer, go to the next question
 theTest.addEventListener("click", function(event){
     if(event.target.matches(".trigger")){
         nextQuestion();
     }})
 
+//submit button 
 submitButton.addEventListener("click", function(event){
     event.preventDefault();
 
+//record user info
     newUser();        
 
+//document users initials and user score
         initialsSection.style.display = "none";
         document.querySelector(".the-score").style.display = "block";
         document.querySelector(".user-scores").style.display = "block";
 })
 
+//Function that records user info into thre local storage
 function newUser() {
     var userInitial = document.querySelector("#initials").value;
     if (userInitial === "") {
@@ -157,35 +179,46 @@ function newUser() {
     
 }
 
+//Begin the test again when start over button is clicked
 document.querySelector(".start-over").addEventListener("click", function(){
     
+//reset questions
     correctIndex = 0;
     
+//reset countdown
     timeLeft = 60;
     countdown.textContent =  "Time: 60 seconds";
     
+//go back to initial first page of test
     document.querySelector(".javascript").style.display = "block";
     
+//hide current page
     theScore.style.display = "none";
 })
 
+//clear highscore when "Clear Highscores" button is pressed
 document.querySelector(".clear-highscores").addEventListener("click", function(){
     localStorage.clear();
 
+//reset score list content
     document.querySelector(".user-scores").textContent = " ";
     document.querySelector(".user-scores").style.display = "none";
 
 });
 
+//view highscores for previous records
 viewHighscores.addEventListener("click", function(){
 
+//stop timer if user goes to highscore page
     clearInterval(timerInterval);
    
+//hide all pages except highscore page
     document.querySelector(".javascript").style.display = "none";
     theTest.style.display = "none";
     initialsSection.style.display = "none";
     theScore.style.display = "block";
 
+// For loop the local store and push all input value to html and reset the past highscores.
     document.querySelector(".user-scores").textContent = " ";
     for (let i = 0; i< localStorage.length; i++) {
         var p = document.createElement("p");
